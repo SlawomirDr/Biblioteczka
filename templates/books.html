@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu tworzymy todo i widzimy listę</title>
+    <style>
+        table, th, tr, td {border: 1px solid rgb(11, 7, 243);}
+    </style>
+</head>
+
+<h2>Lista książek</h2>
+
+<table>
+    <thead>
+    <th>Tytuł</th>
+    <th>Autor</th>
+    <th>Ilość stron</th>
+    <th>Okładka</th>
+    <th>Opis</th>
+    </thead>
+{% for book in books %}
+    <tr>
+        <td><a href="/todos/{{ loop.index }}">{{ book.title }}</a></td>
+        <td>{{ book.autor }}</td>
+        <td>{{ book.pages }}</td>
+        <td>{{ book.cover }}</td>
+        <td>{{ book.description }}</td>
+    </tr>
+{% endfor %}
+</table>
+<div>
+    <h2> Dodaj nowy tytuł: </h2>
+    <form method="POST" action="/todos/">
+        {{ form.hidden_tag() }}
+        <table>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Go">
+    </form>
+</div>
+</body>
+</html>
