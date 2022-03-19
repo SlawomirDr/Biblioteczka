@@ -20,7 +20,7 @@
     </thead>
 {% for book in books %}
     <tr>
-        <td><a href="/todos/{{ loop.index }}">{{ book.title }}</a></td>
+        <td><a href="/books/{{ loop.index }}">{{ book.title }}</a></td>
         <td>{{ book.autor }}</td>
         <td>{{ book.pages }}</td>
         <td>{{ book.cover }}</td>
@@ -30,7 +30,7 @@
 </table>
 <div>
     <h2> Dodaj nowy tytuł: </h2>
-    <form method="POST" action="/todos/">
+    <form method="POST" action="/books/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}

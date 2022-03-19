@@ -4,15 +4,15 @@ from forms import BookForm
 from models import books
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "nininini"
+app.config["SECRET_KEY"] = "stephen_king"
 
-@app.route("/todos/", methods=["GET"])
+@app.route("/books/", methods=["GET"])
 def books_list():
     form = BookForm()
     error = ""
     return render_template("books.html", form=form, books=books.all(), error=error)    
     
-@app.route("/todos/", methods=["POST"])
+@app.route("/books/", methods=["POST"])
 def create_book():
     form = BookForm()
     error = ""
@@ -23,7 +23,7 @@ def create_book():
         return redirect(url_for("books_list"))
 
 
-@app.route("/todos/<int:book_id>/", methods=["GET", "POST"])
+@app.route("/books/<int:book_id>/", methods=["GET", "POST"])
 def book_details(book_id):
     book = books.get(book_id - 1)
     form = BookForm(data=book)

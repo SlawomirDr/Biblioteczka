@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2> Zmień dane książki: </h2>
-    <form method="POST" action="/todos/{{ book_id }}/">
+    <form method="POST" action="/books/{{ book_id }}/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}
